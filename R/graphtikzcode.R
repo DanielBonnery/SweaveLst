@@ -1,5 +1,5 @@
 graphtikzcode <-
-function(texte,widthe=7,heighte=7,scale="",...){
+function(texte,widthe=7,heighte=7,scale=1,...){
   par()
   if(!require("tikzDevice")){devtools::install_github("yihui/tikzDevice")}
   require("tikzDevice")
