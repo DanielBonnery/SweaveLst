@@ -1,4 +1,4 @@
-removetikzfile <-function(tmpfile,scale=""){
+removetikzfile <-function(tmpfile,scale=1){
   ww<-readLines(file(tmpfile))
   ww<-ww[!sapply(ww, function(x){any(grep("%",x)==1)})]
   xx<-paste(ww,collapse="\n")
