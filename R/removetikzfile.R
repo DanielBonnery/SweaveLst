@@ -1,6 +1,6 @@
 removetikzfile <-function(tmpfile,scale=c(1,1),yxratio=c(1,1)){
   if(length(scale)==1){scale=rep(scale,2)}
-  if(length(yxratio)==1){scale=rep(yxratio,2)}
+  if(length(yxratio)==1){yxratio=rep(yxratio,2)}
   ww<-readLines(file(tmpfile))
   ww<-ww[!sapply(ww, function(x){any(grep("%",x)==1)})]
   xx<-paste(ww,collapse="\n")  
