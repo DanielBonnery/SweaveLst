@@ -1,7 +1,9 @@
-removetikzfile <-function(tmpfile,scale=1){
+removetikzfile <-function(tmpfile,scale=1,yxratio=1){
   ww<-readLines(file(tmpfile))
   ww<-ww[!sapply(ww, function(x){any(grep("%",x)==1)})]
-  xx<-paste(ww,collapse="\n")
+  xx<-paste(ww,collapse="\n")  
+xx<-paste0("\\redefyxtikzratio{",yxratio,"}
+             ",xx,"\\redefyxtikzratio{1}")
   xx<-paste0("\\rescale{",scale,"}
              ",xx,"\\rescale{1}")
   yy<-gsub('\\','\\\\', xx, fixed=TRUE)
