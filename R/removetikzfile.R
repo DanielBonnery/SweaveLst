@@ -5,7 +5,7 @@ removetikzfile <-function(tmpfile,scale=c(1,1),yxratio=c(1,1)){
   ww<-ww[!sapply(ww, function(x){any(grep("%",x)==1)})]
   xx<-paste(ww,collapse="\n")  
 xx<-paste0("\\redeftikzyxratio{",yxratio[1],"}{",yxratio[2],"}
-             ",xx,"\\redeftikzyxratio{1}")
+             ",xx,"\\redeftikzyxratio{1}{1}")
   xx<-paste0("\\rescale{",scale[1],"}{",scale[2],"}
              ",xx,"\\rescale{1}{1}")
   yy<-gsub('\\','\\\\', xx, fixed=TRUE)
