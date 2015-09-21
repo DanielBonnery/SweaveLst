@@ -6,5 +6,6 @@ removetikzfile <-function(tmpfile,scale=1){
              ",xx,"\\rescale{1}")
   yy<-gsub('\\','\\\\', xx, fixed=TRUE)
   yy<-gsub('x=1pt,y=1pt',paste0('x=1pt,y=1pt,scale=\\\\tikzscale'), yy, fixed=TRUE)
+  yy<-gsub('x=1pt,y=1pt','x=1pt,y=\\\\tikzsyxratio pt', yy, fixed=TRUE)
   file.remove(tmpfile)
   return(yy)}
