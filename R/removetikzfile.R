@@ -10,6 +10,6 @@ xx<-paste0("\\redeftikzyxratio{",yxratio[1],"}{",yxratio[2],"}
              ",xx,"\\rescale{1}{1}")
   yy<-gsub('\\','\\\\', xx, fixed=TRUE)
   yy<-gsub('x=1pt,y=1pt',paste0('x=1pt,y=1pt,scale=\\\\tikzscale'), yy, fixed=TRUE)
-  yy<-gsub('x=1pt,y=1pt','x=1pt,y=\\\\tikzsyxratio pt', yy, fixed=TRUE)
+  yy<-gsub('x=1pt,y=1pt','x=1pt,y=\\\\tikzyxratio pt', yy, fixed=TRUE)
   file.remove(tmpfile)
   return(yy)}
