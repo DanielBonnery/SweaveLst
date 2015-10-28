@@ -14,7 +14,7 @@ xx<-paste0("\\redeftikzyxratio{",yxratio[1],"}{",yxratio[2],"}
 if(addfigureenv|!is.null(caption)|!is.null(label)){
   yy<-paste0("\\\\begin{figure}[H]",
              if(!is.null(caption)){paste0("\\\\caption{",caption,"}")}else{character(0)},
-if(!is.null(label)){paste0("\\\\caption{",label,"}")}else{character(0)},
+if(!is.null(label)){paste0("\\\\label{",label,"}")}else{character(0)},
 yy,
 "\\\\end{figure}")}
 
