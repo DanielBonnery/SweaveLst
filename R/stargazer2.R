@@ -19,7 +19,7 @@ function(...){
   x<-gsub(paste0("\\\\",replacement),"}",x)
   replacement<-paste(c("oooowoieghoihoihwoeghohoihwoeihgohsdfsdfse",sample(letters,20,replace=TRUE)),collapse="")
   x<-gsub("$\\\\hat[{]\\\\mkern6mu[]]}$",replacement,x)
-  x<-gsub("[$]\\\\hat[{]\\\\mkern6mu[}][$]",replacement,x)
+  x<-gsub("[$]\\\\\\\\hat[{]\\\\\\\\mkern6mu[}][$]",replacement,x)
   x<-gsub(replacement,"^",x)
   x
 }
