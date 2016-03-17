@@ -7,6 +7,6 @@ compile<-function(filename,directory=getwd()){
       bibtex -terse '",filename,".aux';
       pdflatex '",filename,".tex' -interaction=nonstopmode;
       pdflatex '",filename,".tex' -interaction=nonstopmode;}  
-    "),wait=FALSE)
+    "),wait=FALSE,ignore.stdout=TRUE, ignore.stderr=TRUE)
   nettoie(directory)
 }
