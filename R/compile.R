@@ -5,7 +5,7 @@ compile<-function(filename,directory=getwd()){
          show.output.on.console = FALSE,wait=FALSE,ignore.stdout=TRUE, ignore.stderr=TRUE)
   system(paste0("bibtex -terse '",file.path(directory,filename),".aux'"),
          show.output.on.console = FALSE,wait=FALSE,ignore.stdout=TRUE, ignore.stderr=TRUE)
-  system(paste0("pdflatex '",file.path(directory,filename),".tex' -interaction=nonstopmode;")
+  system(paste0("pdflatex '",file.path(directory,filename),".tex' -interaction=nonstopmode;"),
          show.output.on.console = FALSE,wait=FALSE,ignore.stdout=TRUE, ignore.stderr=TRUE)
   system(paste0("pdflatex '",file.path(directory,filename),".tex' -interaction=nonstopmode;"),
          show.output.on.console = FALSE,wait=FALSE,ignore.stdout=TRUE, ignore.stderr=TRUE)
