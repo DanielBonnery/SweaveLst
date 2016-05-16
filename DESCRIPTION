@@ -1,11 +1,14 @@
 Package: SweaveLst
 Type: Package
-Title: Redefines Sweave and stargazer commands to replace Sinput and Soutput latex environments by lstlistings environments
-Version: 1.0
-Date: 2015-07-17
-Author: Daniel Bonn\'{e}ry
-Maintainer: Daniel Bonn\'{e}ry <daniel.bonnery@gmail.com>
-Description: Redefines Sweave commands to replace Sinput and Soutput latex environments by lstlistings environments
-License: GPU?
-Imports:
-    stargazer
+Title: X
+Version: 1.0 
+Date: 2016-05-16
+Author: D. Bonnery
+Maintainer: D. Bonnery  <dbonnery@umd.edu>
+Imports: stargazer
+Suggests: 
+Description: Data
+Remotes: yihui/tikzDevice
+License: GPL (>= 2)
+LazyLoad: yes
+LazyData: true
