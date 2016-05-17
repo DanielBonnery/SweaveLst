@@ -12,7 +12,7 @@ xx<-paste0("\\redeftikzyxratio{",yxratio[1],"}{",yxratio[2],"}
   yy<-gsub('x=1pt,y=1pt',paste0('x=1pt,y=1pt,scale=\\\\tikzscale'), yy, fixed=TRUE)
   yy<-gsub('x=1pt,y=1pt','x=1pt,y=\\\\tikzyxratio pt', yy, fixed=TRUE)
   yy<-gsub(';\n', '; ', yy, fixed=TRUE)
-  yy<-gsub('--\n', '-- ', yy, fixed=TRUE)
+  yy<-gsub('--\n', '-- ', yy, fixed=TRUE) 
   yy<-gsub('\n\n', '\n', yy, fixed=TRUE)
 if(addfigureenv|!is.null(caption)|!is.null(label)){
   yy<-paste0("\\\\begin{figure}[H]",
