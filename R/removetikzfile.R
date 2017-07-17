@@ -25,7 +25,7 @@ yy,
     try(file.remove(paste0(createtexfileinto,".rnw")))
     file.create(paste0(createtexfileinto,".rnw"));
     sink(paste0(createtexfileinto,".rnw"))
-    cat("\\Sexpr{zz}")
+    cat("\\Sexpr{yy}")
     sink()
     SweaveLst::Sweavelst(paste0(createtexfileinto,".rnw"))
   }
