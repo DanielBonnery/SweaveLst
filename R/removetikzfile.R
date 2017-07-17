@@ -25,7 +25,7 @@ yy,
     try(file.remove(paste0(createtexfileinto,".rnw")))
     file.create(paste0(createtexfileinto,".rnw"));
     yyrda=tempfile()
-    save(yy,file="yy.rda")
+    save(yy,file=yyrda)
     sink(paste0(createtexfileinto,".rnw"))
     cat(
 paste0('<<echo=FALSE,results=hide>>
