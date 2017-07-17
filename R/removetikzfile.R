@@ -1,10 +1,10 @@
-removetikzfile <-function(tmpfile,scale=c(1,1),yxratio=c(1,1),caption=NULL,label=NULL,addfigureenv=FALSE){
+removetikzfile <-function(tmpfile,scale=c(1,1),yxratio=c(1,1),caption=NULL,label=NULL,addfigureenv=FALSE,createtexfileinto=NULL){
   if(length(scale)==1){scale=rep(scale,2)}
   if(length(yxratio)==1){yxratio=rep(yxratio,2)}
   ww<-readLines(file(tmpfile))
   ww<-ww[!sapply(ww, function(x){any(grep("%",x)==1)})]
   xx<-paste(ww,collapse="\n")  
-xx<-paste0("\\redeftikzyxratio{",yxratio[1],"}{",yxratio[2],"}
+  xx<-paste0("\\redeftikzyxratio{",yxratio[1],"}{",yxratio[2],"}
              ",xx,"\\redeftikzyxratio{1}{1}")
   xx<-paste0("\\rescale{",scale[1],"}{",scale[2],"}
              ",xx,"\\rescale{1}{1}")
@@ -20,6 +20,13 @@ if(addfigureenv|!is.null(caption)|!is.null(label)){
 if(!is.null(label)){paste0("\\\\label{",label,"}")}else{character(0)},
 yy,
 "\\\\end{figure}")}
-
   file.remove(tmpfile)
+  if(!is.null(createtexfileinto)){
+    try(file.remove(paste0(createtexfileinto,".rnw")))
+    file.create(paste0(createtexfileinto,".rnw"));
+    sink(paste0(createtexfileinto,".rnw"))
+    cat("\\Sexpr{zz}")
+    sink()
+    SweaveLst::Sweavelst(paste0(createtexfileinto,".rnw"))
+  }
   return(yy)}
