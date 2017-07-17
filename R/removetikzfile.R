@@ -24,8 +24,13 @@ yy,
   if(!is.null(createtexfileinto)){
     try(file.remove(paste0(createtexfileinto,".rnw")))
     file.create(paste0(createtexfileinto,".rnw"));
+    save(yy,file="yy.rda")
     sink(paste0(createtexfileinto,".rnw"))
-    cat("\\Sexpr{yy}")
+    cat(
+'<<echo=FALSE,results=hide>>
+load("yy.rda")
+@
+\\Sexpr{yy}')
     sink()
     SweaveLst::Sweavelst(paste0(createtexfileinto,".rnw"))
   }
