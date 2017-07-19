@@ -28,7 +28,7 @@ yy,
     save(yy,file=yyrda)
     sink(paste0(createtexfileinto,".rnw"))
     cat(
-paste0('<<echo=FALSE,results=hide>>
+paste0('<<echo=FALSE,results=hide>>=
 load("',yyrda,'")
 @
 \\Sexpr{yy}'))
