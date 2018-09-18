@@ -2,7 +2,7 @@ Package: SweaveLst
 Type: Package
 Title: X
 Version: 1.0 
-Date: 2018-09-17
+Date: 2018-09-18
 Author: D. Bonnery
 Maintainer: D. Bonnery  <dbonnery@umd.edu>
 Imports: stargazer
