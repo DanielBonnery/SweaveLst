@@ -11,7 +11,7 @@
 print_demo_file<-function(topic,package){
   paste0(
     "\\\\textbf{Rcode for ",package,"::",topic,"}\n",
-    "\\\\begin{lstlisting}[style=Rinput,title={R demo file - package: ",package," topic: - ",topic,"},captionpos=tb]\n",
+    "\\\\begin{lstlisting}[style=Rinput,title={R demo file - package: ",package," - topic: ",topic,"},captionpos=tb]\n",
     paste(readLines(system.file("demo",paste0(topic,".R"),package=package)),
           collapse="\n"),
     "\\\\end{lstlisting}\n")}
