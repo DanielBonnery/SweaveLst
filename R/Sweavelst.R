@@ -1,3 +1,10 @@
+#' Sweaves a document and replace all R code by lstlisting environment in the output
+#' @param file a character string, the  filename of the file to Sweave 
+#' @param fullpath a full path
+#' @param out.width  a numeric value  
+#' @param width a numeric value
+#' @param height a numeric value
+#' @param prompte  a character string
 Sweavelst <-
 function(file=NULL,
                     path=getwd(),
@@ -37,13 +44,7 @@ function(file=NULL,
     yarep <- gsub( "begin\\{Soutput\\}", "begin{lstlisting}[style=Routput]", yarep )
     yarep <- gsub( "\\{Sinput", "{lstlisting", yarep )
     yarep <- gsub( "\\{Soutput", "{lstlisting", yarep )
-    if(FALSE){
-      yarep <- gsub( "0.00,0.00,0.00", "remlacecatoutusuitee", yarep )
-      yarep <- gsub( "1.00,1.00,1.00", "0.00,0.00,0.00", yarep )
-      yarep <- gsub( "remlacecatoutusuitee","1.00,1.00,1.00", yarep )}
-    yarep <- gsub( "‘", "'", yarep )
-    yarep <- gsub( "‘", "'", yarep )
-    yarep <- gsub( "’", "'", yarep )
+    yarep <- gsub( stringi::stri_unescape_unicode(gsub("<U+(....)>", "\\\\u\\1", "<U+2019>")), "'", yarep )
+    yarep <- gsub( stringi::stri_unescape_unicode(gsub("<U+(....)>", "\\\\u\\1", "<U+2018>")), "'", yarep )
     yarep[yarep=="\\end{lstlisting}"]<-"\\end{lstlisting}\n"
-   # yarep <- gsub( "3.3333333333333333", "\\textwidth", yarep )
     cat(yarep, file=outfile, sep="\n")}}
