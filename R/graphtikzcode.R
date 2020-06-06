@@ -1,3 +1,4 @@
+#' Reads the output file of the tikz command into an R character string. 
 #' @param texte file containing tikz code
 #' @param widthe a numeric
 #' @param heighte a numeric
@@ -69,7 +70,7 @@ function(texte,
   dev.off()  
   return(removetikzfile(tmpfile,modify=modify,scale=scale,yxratio=yxratio,caption=caption,label=label,addfigureenv=addfigureenv))}
 
-
+#' Modifies the output of the  tikz command and copies it to a tex file.
 #' @param texte file containing tikz code
 #' @param widthe a numeric
 #' @param heighte a numeric
@@ -151,6 +152,7 @@ load("',temprdafile,'")
       file.copy(from=temptexfile, to=output,overwrite = TRUE)
         return(output)}
 
+#' Creates a pdf file by converting a graph to tikz and lualatexing the output
 #' @param texte file containing tikz code
 #' @param output output fill path (will be overwritten if existing with no warning) 
 #' @param widthe a numeric
