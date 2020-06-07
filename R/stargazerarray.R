@@ -1,3 +1,6 @@
+#'Prints a multidimensional array
+#'@param XX
+#'@param ...  additional arguments to pass to SweaveLst::stargazer2
 stargazerarray <-
 function(XX,...){
   tables<-c(apply(XX,3:length(dim(XX)),function(X){stargazer2(X,...)}))

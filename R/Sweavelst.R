@@ -5,14 +5,46 @@
 #' @param width a numeric value
 #' @param height a numeric value
 #' @param prompte  a character string
+#' @examples
+#' tempbasename<-tempfile()
+#' temprnwfile=paste0(tempbasename,".rnw")
+#' temptexfile=paste0(tempbasename,".tex")
+#' temppdffile=paste0(tempbasename,".pdf")
+#' file.create(temprnwfile);
+#' sink(temprnwfile)
+#' cat(
+#' '\\documentclass[12pt]{article}
+#' \\usepackage{SweaveLst}
+#' \\usepackage{amsmath}
+#' \\begin{document}
+#' <<>>=
+#' x=2:10
+#' mean(x)
+#' @
+#' $Var[X]=\\Sexpr{var(x)}$
+#' \\end{document}')
+#' sink()
+#' SweaveLst::Sweavelst(fullpath = temprnwfile)
+#' system(paste0("cd ",dirname(temptexfile),"; lualatex '",basename(temptexfile),"';"))
+#' fs::file_show(temppdffile)
+#' #' \\end{document}')
+#' sink()
+#' SweaveLst::Sweavelst(fullpath = temprnwfile)
+#' system(paste0("cd ",dirname(temptexfile),";
+#'  lualatex '",basename(temptexfile),"';
+#'  bibtex '",basename(gsub(".tex",".aux",temptexfile)),"';
+#'  lualatex '",basename(temptexfile),"';"))
+#' fs::file_show(temppdffile)
+
+
 Sweavelst <-
-function(file=NULL,
-                    path=getwd(),
-                    fullpath=NULL,
-                    out.width=10,
-                    width=50,
-                    height=10,
-                    prompte="  "){
+  function(file=NULL,
+           path=getwd(),
+           fullpath=NULL,
+           out.width=10,
+           width=50,
+           height=10,
+           prompte="  "){
   options(continue="   ",
           out.width=out.width,
           width=width,

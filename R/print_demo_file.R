@@ -2,11 +2,37 @@
 #'
 #'@param topic
 #'@param package
-#'@example 
-#'topic="nlm"
-#'package="stats"
-#'print_demo_file(topic,package)
-
+#'@examples
+#' topic="nlm"
+#' package="stats"
+#' print_demo_file(topic,package)
+#' ## it can be called in the \code{\Sexpr} command in SweaveLst
+#' tempbasename<-tempfile()
+#' temprnwfile=paste0(tempbasename,".rnw")
+#' temptexfile=paste0(tempbasename,".tex")
+#' temppdffile=paste0(tempbasename,".pdf")
+#' file.create(temprnwfile);
+#' sink(temprnwfile)
+#' cat(
+#' '\\documentclass[12pt]{article}
+#' \\usepackage{SweaveLst}
+#' \\usepackage{float}
+#' \\usepackage{amsmath}
+#' \\begin{document}
+#' <<results=hide>>=
+#' topic="nlm"
+#' package="stats"
+#' x=print_demo_file(topic,package)
+#' @
+#' 
+#' \\Sexpr{x}
+#' \\end{document}')
+#' sink()
+#' SweaveLst::Sweavelst(fullpath = temprnwfile)
+#' system(paste0("cd ",dirname(temptexfile),";
+#'  lualatex '",basename(temptexfile),"';
+#'  bibtex '",basename(gsub(".tex",".aux",temptexfile)),"';"))
+#' fs::file_show(temppdffile)
 
 print_demo_file<-function(topic,package){
   paste0(

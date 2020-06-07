@@ -4,10 +4,6 @@
 #' @param caption=NULL,
 #' @param label=NULL,
 #' @param addfigureenv=FALSE,
-#' @param createtexfileinto=NULL,
-#' @param createstandalonetexfileinto=NULL,
-#' @param createpdffileinto=NULL,
-#' @param usepackages=NULL,
 #' @param modify=NULL 
 #' @examples
 #' tmpfile=tempfile()
@@ -27,7 +23,6 @@ removetikzfile <-function(tmpfile,
                           caption=NULL,
                           label=NULL,
                           addfigureenv=FALSE,
-                          usepackages=NULL,
                           modify=NULL){
   if(length(scale)==1){scale=rep(scale,2)}
   if(length(yxratio)==1){yxratio=rep(yxratio,2)}

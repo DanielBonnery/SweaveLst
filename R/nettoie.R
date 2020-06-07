@@ -1,3 +1,5 @@
+#' get rid of all latex compilation files 
+#' @param directory a character string indicating a file path.
 nettoie<-function(directory=getwd()){
   file.remove(file.path(directory,unique(unlist(sapply(c("\\.log$",
                        "\\.dvi$",
