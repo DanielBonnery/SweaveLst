@@ -211,3 +211,66 @@ graph2pdffile <-
     system(paste0("cd ",dirname(temptexfile),"; lualatex '",basename(temptexfile),"';"))
     file.copy(from=temppdffile, to=output,overwrite = TRUE)
     return(output)}
+
+
+
+
+
+#' Creates a png file by converting a graph to tikz and lualatexing the output
+#' @param texte file containing tikz code
+#' @param output output fill path (will be overwritten if existing with no warning) 
+#' @param widthe a numeric
+#' @param heighte a numeric
+#' @param caption a character string.
+#' @param label a character string.
+#' @param addfigureenv a boolean
+#' @param sanitize a booleaan
+#' @param usepackages a character string
+#' @param modify a function that takes a character string as a parameter and returns a character string
+#' @param ... additional parameters to pass to  tikzDevice::tikz
+#' @description 
+#' Based on tikzDevice::tikz.
+#' @examples
+#' ## First example: we generate the tikz code for a graph. 
+#' 
+#' outputpngfile<-tempfile(fileext = ".png")
+#' command="print(ggplot2::ggplot(data=cars,ggplot2::aes(x=speed,y=dist))+ggplot2::geom_point())"
+#' graph2pngfile(command,output=outputpngfile)
+#' readLines(outputpngfile)
+#' fs::file_show(outputpngfile)
+#' graph2pngfile(command,output=outputpngfile,widthe=7,heighte=3)
+#' fs::file_show(outputpngfile)
+#' command="print(ggplot2::ggplot(data=cars,ggplot2::aes(x=speed,y=dist,color=dist))+
+#' ggplot2::geom_point())"
+#' fs::file_show(graph2pngfile(command,widthe=7,heighte=3,modify=function(y){
+#' gsub("dist","$\\frac{1-\\exp\\left(-\\mathrm(x)^2\\right)}{\\sin(\\mathrm{x})+\\mathds{1}_{\\{0\\}}(\\mathrm{x})}$",y)}))
+
+graph2pngfile <-
+  function(texte,
+           output=tempfile(fileext = ".png"),
+           widthe=7,
+           heighte=7,
+           caption=NULL,
+           label=NULL,
+           addfigureenv=FALSE,
+           sanitize=FALSE,
+           modify=NULL,
+           addtopreamble=NULL,
+           ...){
+    tempbasename<-tempfile()
+    temppdffile<-paste0(tempbasename,".pdf")
+    temppngfile<-paste0(tempbasename,".png")
+    graph2pdffile(texte,
+                  output=temppdffile,
+                  modify=modify,
+                  widthe=widthe,
+                  heighte=heighte,
+                  caption=caption,
+                  label=label,
+                  addfigureenv=addfigureenv,
+                  sanitize=sanitize,
+                  addtopreamble=addtopreamble,
+                  ...)
+    pdftools::pdf_convert(temppdffile,"png",dpi = 1200,filenames = temppngfile)
+    file.copy(from=temppngfile, to=output,overwrite = TRUE)
+    return(output)}
