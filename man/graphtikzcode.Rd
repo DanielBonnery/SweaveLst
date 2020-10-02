@@ -68,4 +68,14 @@ cat(
 sink()
 SweaveLst::Sweavelst(fullpath = figonlyrnwfile)
 readLines(gsub(".rnw",".tex",figonlyrnwfile))
+
+library(ggplot2)
+figureX<-function(){
+figureXX<-ggplot(data=cars,aes(x=speed,y=dist))+geom_point()
+x=graphtikzcode("print(figureXX)")
+graph2texfile("print(figureXX)",file.path(tempdir(),"figureX.tex"))
+graph2pdffile("print(figureXX)",file.path(tempdir(),"figureX.pdf"))
+}
+figureX()
+fs::file_show(file.path(tempdir(),"figureX.pdf"))
 }

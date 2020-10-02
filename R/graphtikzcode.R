@@ -32,7 +32,16 @@
 #' sink()
 #' SweaveLst::Sweavelst(fullpath = figonlyrnwfile)
 #' readLines(gsub(".rnw",".tex",figonlyrnwfile))
-
+#' 
+#' library(ggplot2)
+#' figureX<-function(){
+#' figureXX<-ggplot(data=cars,aes(x=speed,y=dist))+geom_point()
+#' x=graphtikzcode("print(figureXX)")
+#' graph2texfile("print(figureXX)",file.path(tempdir(),"figureX.tex"))
+#' graph2pdffile("print(figureXX)",file.path(tempdir(),"figureX.pdf"))
+#' }
+#' figureX()
+#' fs::file_show(file.path(tempdir(),"figureX.pdf"))
 graphtikzcode <-
 function(texte,
          widthe=7,
@@ -68,7 +77,10 @@ function(texte,
            addtopreamble),...)  
   xx=try(eval.parent(parse(text=texte),n=1))
   if(is.element("try-error",class(xx))){
-    eval.parent(parse(text=texte),n=0)
+    xx=try(eval.parent(parse(text=texte),n=2))
+  }
+  if(is.element("try-error",class(xx))){
+    xx=try(eval.parent(parse(text=texte),n=3))
   }
   dev.off()  
   return(removetikzfile(tmpfile,modify=modify,scale=scale,yxratio=yxratio,caption=caption,label=label,addfigureenv=addfigureenv))}
