@@ -68,7 +68,7 @@ function(texte,
            addtopreamble),...)  
   xx=try(eval.parent(parse(text=texte),n=1))
   if(is.element("try-error",class(xx))){
-    eval(parse(text=texte))
+    eval.parent(parse(text=texte),n=0)
   }
   dev.off()  
   return(removetikzfile(tmpfile,modify=modify,scale=scale,yxratio=yxratio,caption=caption,label=label,addfigureenv=addfigureenv))}
