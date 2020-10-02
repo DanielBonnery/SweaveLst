@@ -66,7 +66,10 @@ function(texte,
            if(standalone){c("\\usepackage{float}",
              "\\usepackage{SweaveLst}")}else{character(0)},
            addtopreamble),...)  
-  eval.parent(parse(text=texte),n=1)
+  xx=try(eval.parent(parse(text=texte),n=1))
+  if(is.element("try-error",class(xx))){
+    eval(parse(text=texte))
+  }
   dev.off()  
   return(removetikzfile(tmpfile,modify=modify,scale=scale,yxratio=yxratio,caption=caption,label=label,addfigureenv=addfigureenv))}
 
@@ -244,7 +247,7 @@ graph2pdffile <-
 #' ggplot2::geom_point())"
 #' fs::file_show(graph2pngfile(command,widthe=7,heighte=3,modify=function(y){
 #' gsub("dist","$\\frac{1-\\exp\\left(-\\mathrm(x)^2\\right)}{\\sin(\\mathrm{x})+\\mathds{1}_{\\{0\\}}(\\mathrm{x})}$",y)}))
-
+#' convert a print (graph) expression to a png file.
 graph2pngfile <-
   function(texte,
            output=tempfile(fileext = ".png"),

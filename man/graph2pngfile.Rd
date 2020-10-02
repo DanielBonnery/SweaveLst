@@ -58,4 +58,5 @@ command="print(ggplot2::ggplot(data=cars,ggplot2::aes(x=speed,y=dist,color=dist)
 ggplot2::geom_point())"
 fs::file_show(graph2pngfile(command,widthe=7,heighte=3,modify=function(y){
 gsub("dist","$\\\\frac{1-\\\\exp\\\\left(-\\\\mathrm(x)^2\\\\right)}{\\\\sin(\\\\mathrm{x})+\\\\mathds{1}_{\\\\{0\\\\}}(\\\\mathrm{x})}$",y)}))
+convert a print (graph) expression to a png file.
 }
