@@ -1,0 +1,137 @@
+\RequirePackage{xcolor}
+\RequirePackage{tikz}
+ \usetikzlibrary{arrows}
+ \usetikzlibrary{math}
+\RequirePackage{listings}
+
+
+
+%___________________________________________________________________________
+% Colors
+%___________________________________________________________________________
+\definecolor{defaulttextcolor}{gray}{0}
+\definecolor{defaultbackgroundcolor2}{gray}{0.9}
+\definecolor{bleuJPSM}{cmyk}{1,0.35,0,0.24}
+\definecolor{bleuJPSM2}{cmyk}{1,0.35,0,0.45}
+\definecolor{bleuJPSM3}{cmyk}{.5,0.17,0,0.01}
+\definecolor{rougeUT1}{cmyk}{0,0.89,0.85,0.1}
+\colorlet{couleurtheme}{bleuJPSM}
+\colorlet{couleurtheme2}{bleuJPSM2}
+\colorlet{couleurtheme3}{bleuJPSM3}
+\colorlet{couleurdebase}{couleurtheme}
+\colorlet{couleurdecodekey}{couleurtheme}
+\colorlet{couleurdecodekey2}{couleurtheme2}
+\colorlet{defaultfontcolor}{black}
+
+
+\DeclareOption{darktheme}{%
+\colorlet{defaultfontcolor}{white}
+\definecolor{defaulttextcolor}{gray}{0.5}
+}
+\ProcessOptions
+
+
+
+
+
+%___________________________________________________________________________
+% R output options
+%___________________________________________________________________________
+\lstloadlanguages{SAS}
+\lstset{language=SAS,extendedchars}
+% \lstdefineformat{R}{~=\( \sim \)}
+% \lstdefineformat{R}{ñ=\( \~{n} \)}
+\lstdefinestyle{sasinput}{%
+  language=SAS,                     % the language of the code
+  basicstyle=\footnotesize\ttfamily,       % the size of the fonts that are used for the code
+  numbers=none,
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  rulecolor=\color{defaulttextcolor},        % if not re))
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  keywordstyle=\color{couleurdecodekey}\bfseries,      % keyword style
+  commentstyle=\color{green},   % comment style
+  stringstyle=\color{couleurdecodekey2},      % string literal style
+  	columns = fullflexible,
+	frame=single,
+	frameround=tttt,
+	rulesep=0pt,
+	extendedchars
+	}
+\lstloadlanguages{R}
+\lstset{language=R,extendedchars}
+\lstdefinestyle{Rinput}{%
+  language=R,                     % the language of the code
+  basicstyle=\footnotesize\ttfamily,       % the size of the fonts that are used for the code
+  numbers=none,
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  rulecolor=\color{defaulttextcolor},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  keywordstyle=\color{couleurdecodekey}\bfseries,      % keyword style
+  commentstyle=\color{green},   % comment style
+  stringstyle=\color{couleurdecodekey2},      % string literal style
+  morekeywords={*,...}            % if you want to add more keywords to the set
+	columns = fullflexible,
+	frame=single,
+	frameround=tttt,
+	rulesep=0pt,
+	extendedchars
+	}
+\lstdefinestyle{Rcmd}{%
+  language=R,                     % the language of the code
+  basicstyle=\color{couleurdecodekey}\ttfamily,       % the size of the fonts that are used for the code
+  numbers=none,
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  rulecolor=\color{defaultfontcolor},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  keywordstyle=\color{couleurdecodekey}\bfseries,      % keyword style
+  commentstyle=\color{green},   % comment style
+  stringstyle=\color{couleurdecodekey2},      % string literal style
+  morekeywords={*,...}            % if you want to add more keywords to the set
+	columns = fullflexible,
+	frame=single
+	}
+
+
+\lstdefinestyle{Routput}{%
+  language=R,                     % the language of the code
+  basicstyle=\footnotesize\ttfamily,       % the size of the fonts that are used for the code
+  numbers=none,
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  rulecolor=\color{defaultfontcolor},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  keywordstyle=\color{defaultfontcolor}\bfseries,      % keyword style
+  commentstyle=\color{green},   % comment style
+  stringstyle=\color{couleurdecodekey2},      % string literal style
+  morekeywords={*,...}            % if you want to add more keywords to the set
+	columns = fixed,
+	frame=none
+	}
+  
+%___________________________________________________________________________
+% parametere pour les graphiques
+%___________________________________________________________________________
+
+\tikzmath{\tikzscale=.8*\textwidth/\linewidth;}
+\tikzmath{\tikzyxratio=1;}
+\newcommand\rescale[2]{\tikzmath{\tikzscale=#1*.8*\linewidth/\textwidth;}}
+\newcommand\redeftikzyxratio[2]{\tikzmath{\tikzyxratio=#1;}}
