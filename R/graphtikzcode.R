@@ -223,7 +223,7 @@ graph2pdffile <-
                standalone=TRUE,
                addtopreamble=addtopreamble,
                ...)
-    try(file.copy(system.file("SweaveLst.sty",package="SweaveLst"))
+    try(file.copy(system.file("SweaveLst.sty",package="SweaveLst")))
     system(paste0("cd ",dirname(temptexfile),"; lualatex '",basename(temptexfile),"';"))
     file.copy(from=temppdffile, to=output,overwrite = TRUE)
     return(output)}
