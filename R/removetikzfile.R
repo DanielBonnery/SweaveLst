@@ -35,7 +35,8 @@ removetikzfile <-function(tmpfile,
   if(any(scale!=1)){
     xx<-paste0("\\rescale{",scale[1],"}{",scale[2],"}
              ",xx,"\\rescale{1}{1}")}
-  yy<-gsub('\\','\\\\', xx, fixed=TRUE)
+  yy<-xx;
+  yy<-try(gsub('\\','\\\\', yy, fixed=TRUE))
   yy<-gsub('x=1pt,y=1pt',paste0('x=1pt,y=1pt,scale=\\\\tikzscale'), yy, fixed=TRUE)
   yy<-gsub('x=1pt,y=1pt','x=1pt,y=\\\\tikzyxratio pt', yy, fixed=TRUE)
   yy<-gsub(';\n', '; ', yy, fixed=TRUE)
