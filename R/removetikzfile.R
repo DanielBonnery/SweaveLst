@@ -35,8 +35,8 @@ removetikzfile <-function(tmpfile,
   if(any(scale!=1)){
     xx<-paste0("\\rescale{",scale[1],"}{",scale[2],"}
              ",xx,"\\rescale{1}{1}")}
-  yy<-try((function(xx){
-    yy<-gsub('\\','\\\\', xx, fixed=TRUE)
+    yy<-iconv("utf-8", "utf-8//ignore", xx);
+    yy<-gsub('\\','\\\\', yy, fixed=TRUE)
     yy<-gsub('x=1pt,y=1pt',paste0('x=1pt,y=1pt,scale=\\\\tikzscale'), yy, fixed=TRUE)
     yy<-gsub('x=1pt,y=1pt','x=1pt,y=\\\\tikzyxratio pt', yy, fixed=TRUE)
     yy<-gsub(';\n', '; ', yy, fixed=TRUE)
@@ -50,8 +50,6 @@ removetikzfile <-function(tmpfile,
                  "\\\\end{figure}")}
     if(!is.null(modify)){
       yy<-modify(yy)}
-    yy})(xx))
-  if(is.element("try-error",class(yy))){yy<-paste0(xx,yy,Sys.getlocale())}
   return(yy)}
 
 
