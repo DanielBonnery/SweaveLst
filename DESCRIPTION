@@ -2,14 +2,15 @@ Package: SweaveLst
 Type: Package
 Title: X
 Version: 1.0
-Date: 2021-05-10
+Date: 2021-10-20
 Author: D. Bonnery
 Maintainer: D. Bonnery  <daniel.bonnery@gmail.com>
 Imports: stargazer
 Suggests: 
 Description: Data
 Remotes: yihui/tikzDevice
+Depends: pdftools
 License: GPL (>= 2)
 LazyLoad: yes
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2

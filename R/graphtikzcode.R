@@ -16,9 +16,9 @@
 #' Based on tikzDevice::tikz.
 #' @examples
 #' ## First example: we generate the tikz code for a graph.
-#' library(ggplot2)
-#' texte="print(ggplot(data=cars,aes(x=speed,y=dist))+geom_point())"
-#' graphtikzcode("print(ggplot(data=cars,aes(x=speed,y=dist))+geom_point())")
+  #' library(ggplot2)
+  #' texte="print(ggplot(data=cars,aes(x=speed,y=dist))+geom_point())"
+  #' graphtikzcode("print(ggplot(data=cars,aes(x=speed,y=dist))+geom_point())")
 #' ## Second example, we create a rnw file 
 #' ## This rnw file will be interpretated by Sweave and will print the 
 #' ## tikz dode of the plot into the corresponding tex file. 
