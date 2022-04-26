@@ -15,6 +15,7 @@ graph2pngfile(
   sanitize = FALSE,
   modify = NULL,
   addtopreamble = NULL,
+  texcompiler = "lualatex",
   ...
 )
 }

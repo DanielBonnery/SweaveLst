@@ -274,6 +274,7 @@ graph2pngfile <-
            sanitize=FALSE,
            modify=NULL,
            addtopreamble=NULL,
+           texcompiler="lualatex",
            ...){
     tempbasename<-tempfile()
     temppdffile<-paste0(tempbasename,".pdf")
@@ -288,6 +289,7 @@ graph2pngfile <-
                   addfigureenv=addfigureenv,
                   sanitize=sanitize,
                   addtopreamble=addtopreamble,
+                  texcompiler=texcompiler,
                   ...)
     pdftools::pdf_convert(temppdffile,"png",dpi = 1200,filenames = temppngfile)
     file.copy(from=temppngfile, to=output,overwrite = TRUE)
