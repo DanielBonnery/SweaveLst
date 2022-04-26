@@ -15,6 +15,7 @@ graph2pdffile(
   sanitize = FALSE,
   modify = NULL,
   addtopreamble = NULL,
+  texcompiler = "lualatex",
   ...
 )
 }

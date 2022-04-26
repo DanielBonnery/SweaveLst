@@ -207,6 +207,7 @@ graph2pdffile <-
            sanitize=FALSE,
            modify=NULL,
            addtopreamble=NULL,
+           texcompiler="lualatex",
            ...){
     tempbasename<-tempfile()
     temptexfile<-paste0(tempbasename,".tex")
@@ -224,7 +225,7 @@ graph2pdffile <-
                addtopreamble=addtopreamble,
                ...)
     try(file.copy(system.file("extdata/SweaveLst.sty",package="SweaveLst"),dirname(temptexfile)))
-    system(paste0("cd ",dirname(temptexfile),"; lualatex '",basename(temptexfile),"';"))
+    system(paste0("cd ",dirname(temptexfile),"; ",texcompiler, " '",basename(temptexfile),"';"))
     try(file.remove(file.path(dirname(temptexfile),"SweaveLst.sty")))
     file.copy(from=temppdffile, to=output,overwrite = TRUE)
     return(output)}
