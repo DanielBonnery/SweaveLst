@@ -118,7 +118,7 @@ function(texte,
 #'   modify=function(y){
 #' gsub("dist","$\\\\\\\\left(1-\\\\\\\\exp\\\\\\\\left(-\\\\\\\\mathrm(x)^2\\\\\\\\right)\left(\\\\\\\\sin(\\\\\\\\mathrm{x})+\\\\\\\\mathds{1}_{\\\\\\\\{0\\\\\\\\}}(\\\\\\\\mathrm{x})\\\\\\\\right)$",y)})
 #' readLines(outputtexfile)
-#' system(paste0("cd ",dirname(outputtexfile),"; lualatex '",basename(outputtexfile),"';"))
+#' system(paste0("cd ",dirname(outputtexfile),"; luatex '",basename(outputtexfile),"';"))
 #' fs::file_show(gsub(".tex",".pdf",outputtexfile))
 graph2texfile <-
   function(texte,
@@ -167,7 +167,7 @@ load("',temprdafile,'")
       file.copy(from=temptexfile, to=output,overwrite = TRUE)
         return(output)}
 
-#' Creates a pdf file by converting a graph to tikz and lualatexing the output
+#' Creates a pdf file by converting a graph to tikz and luatexing the output
 #' @param texte file containing tikz code
 #' @param output output fill path (will be overwritten if existing with no warning) 
 #' @param widthe a numeric
@@ -224,7 +224,7 @@ graph2pdffile <-
                addtopreamble=addtopreamble,
                ...)
     try(file.copy(system.file("extdata/SweaveLst.sty",package="SweaveLst"),dirname(temptexfile)))
-    system(paste0("cd ",dirname(temptexfile),"; lualatex '",basename(temptexfile),"';"))
+    system(paste0("cd ",dirname(temptexfile),"; luatex '",basename(temptexfile),"';"))
     try(file.remove(file.path(dirname(temptexfile),"SweaveLst.sty")))
     file.copy(from=temppdffile, to=output,overwrite = TRUE)
     return(output)}
@@ -233,7 +233,7 @@ graph2pdffile <-
 
 
 
-#' Creates a png file by converting a graph to tikz and lualatexing the output
+#' Creates a png file by converting a graph to tikz and luatexing the output
 #' @param texte file containing tikz code
 #' @param output output fill path (will be overwritten if existing with no warning) 
 #' @param widthe a numeric

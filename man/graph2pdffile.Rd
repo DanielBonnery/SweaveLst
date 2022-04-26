@@ -2,7 +2,7 @@
 % Please edit documentation in R/graphtikzcode.R
 \name{graph2pdffile}
 \alias{graph2pdffile}
-\title{Creates a pdf file by converting a graph to tikz and lualatexing the output}
+\title{Creates a pdf file by converting a graph to tikz and luatexing the output}
 \usage{
 graph2pdffile(
   texte,

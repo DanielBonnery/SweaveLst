@@ -2,7 +2,7 @@
 % Please edit documentation in R/graphtikzcode.R
 \name{graph2pngfile}
 \alias{graph2pngfile}
-\title{Creates a png file by converting a graph to tikz and lualatexing the output}
+\title{Creates a png file by converting a graph to tikz and luatexing the output}
 \usage{
 graph2pngfile(
   texte,
