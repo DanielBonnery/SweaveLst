@@ -66,6 +66,6 @@ graph2texfile(
   modify=function(y){
 gsub("dist","$\\\\\\\\\\\\\\\\left(1-\\\\\\\\\\\\\\\\exp\\\\\\\\\\\\\\\\left(-\\\\\\\\\\\\\\\\mathrm(x)^2\\\\\\\\\\\\\\\\right)\\left(\\\\\\\\\\\\\\\\sin(\\\\\\\\\\\\\\\\mathrm{x})+\\\\\\\\\\\\\\\\mathds{1}_{\\\\\\\\\\\\\\\\{0\\\\\\\\\\\\\\\\}}(\\\\\\\\\\\\\\\\mathrm{x})\\\\\\\\\\\\\\\\right)$",y)})
 readLines(outputtexfile)
-system(paste0("cd ",dirname(outputtexfile),"; luatex '",basename(outputtexfile),"';"))
+system(paste0("cd ",dirname(outputtexfile),"; lualatex '",basename(outputtexfile),"';"))
 fs::file_show(gsub(".tex",".pdf",outputtexfile))
 }
