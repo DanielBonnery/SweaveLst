@@ -14,6 +14,7 @@
 affiche_contenu_fichier_r <- function(fichier) {
     lines <- readLines(fichier)
     escaped_lines <- gsub("#", "\\\\#", lines, fixed = TRUE)
+    escaped_lines <- gsub("_", "\\\\_", escaped_lines, fixed = TRUE)
     paste0("\\textbf{Code R}\n",
            "\\begin{lstlisting}[style=Rinput,title={", fichier, "},captionpos=tb]\n",
            paste(escaped_lines, collapse = "\n"),
